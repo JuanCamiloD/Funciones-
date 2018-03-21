@@ -10,8 +10,15 @@ void intercambiar(int& f,int& j);
 void cambio(int,int &,int &,int &,int &,int &,int &);
 void tiempo(int i);
 void calc_anos(int i);
+void vectorsuma(int j);
+void prueba(int j);
+void cambio_signo(int j);
+void mostrar_impares(int j);
+void matriz_si(int f, int c);
+void matriz_mayor_fila(int f,int c);
+void mayor(int dia, int dia2,int mes, int mes2,int ano,int ano2);
 float a,b;
-int f,j,i,cien,cincuenta,veinte,diez,cinco,uno;
+int f,j,i,c,cien,cincuenta,veinte,diez,cinco,uno,dia,dia2,mes,mes2,ano,ano2;
 int main(){
 	
 	menu();
@@ -35,6 +42,15 @@ void menu(){
 		printf("6. Intercambio de valores. \n");
 		printf("7. Cambio de dolares. \n");
 		printf("8. Mostrar segundos en tiempo parcial.\n");
+		printf("9. Mostrar el cambio de dias a años.\n");
+		printf("10. Suma de numeros en un vector.\n");
+		printf("11. Verificacion de ordenamiento en un vector.\n");
+		printf("12. Cambio de signo a un vector.\n");
+		printf("13. Mostrar los impares de un vector.\n");
+		printf("14. Verifica si una matriz es simetrica o no.\n");
+		printf("15. Encontrar el numero menor en una fila determinada de una matriz.\n");
+		printf("16. Verifica la fecha mas reciente.\n");
+		printf("0. exit \n");
 		printf("Ingrese un opcion: \n");
 		scanf("%d", &opcion);
 		switch(opcion){
@@ -56,19 +72,19 @@ void menu(){
 				break;
 			case 9: calc_anos(i);
 				break;
-			case 10: ;
+			case 10: vectorsuma(j);
 				break;
-			case 11: ;
+			case 11: prueba(j);
 				break;
-			case 12: ;
+			case 12:cambio_signo(j);
 				break;
-			case 13: ;
+			case 13: mostrar_impares(j);
 				break;
-			case 14: ;
+			case 14:  matriz_si(f,c);
 				break;
-			case 15: ;
+			case 15: matriz_mayor_fila( f, c);
 				break;
-			case 16: ;
+			case 16:mayor(dia,dia2,mes,mes2,ano,ano2) ;
 				break;
 			case 0: exit(0);
 				break;
@@ -228,3 +244,163 @@ void calc_anos(int i){
 printf("%d : %d : %d\n",anos+2000,mes,i);
 }
 
+void vectorsuma(int j){
+	const char l=20;
+	int num[l],suma=0;
+	printf("De que tamaño sera el vector:");
+	scanf("%d",&j);
+		for(int i=0;i<j;i++){
+		printf("Escriba el numero %d: ",i+1);
+		scanf("%d",&num[i]);
+	}
+	for(int i=0;i<j;i++){
+		suma+=num[i];
+	}
+	printf("La suma de sus elementos es: %d\n",suma);
+}
+
+void prueba(int j){
+		const char l=20;
+	int num[l],tag=1;
+	printf("De que tamaño sera el vector:");
+	scanf("%d",&j);
+		for(int i=0;i<j;i++){
+		printf("Escriba el numero %d: ",i+1);
+		scanf("%d",&num[i]);
+	}
+    while((i<j)&&(tag==1)){ 
+    if((num[i])>(num[i+1])) 
+    tag=0; 
+    i++; 
+      } 
+
+     if(tag==1) 
+      printf("Los elementos del vector estan ordenados de modo creciente\n"); 
+    else 
+      printf("Los elementos del vector no estan ordenados de modo creciente\n"); 
+}
+
+void cambio_signo(int j){
+	
+	const char l=20;
+	int num[l],cambio[l];
+	printf("De que tamaño sera el vector:");
+	scanf("%d",&j);
+		for(int i=0;i<j;i++){
+		printf("Escriba el numero %d: ",i+1);
+		scanf("%d",&num[i]);
+	}
+	
+	
+    	for(int i=0;i<j;i++){
+		cambio[i]=num[i];
+		cambio[i];
+		printf("La posicion #%d es: %d\n",i+1,cambio[i]*-1);
+	}
+	
+}	
+
+void mostrar_impares(int j){
+	
+   const char l=20;
+	int num[l],impares[l];
+	printf("De que tamaño sera el vector:");
+	scanf("%d",&j);
+		for(int i=0;i<j;i++){
+		printf("Escriba el numero %d: ",i+1);
+		scanf("%d",&num[i]);
+	}
+
+  for(i=0;i<j;i++){
+  
+    if(num[i] % 2 == 0){
+	}else{
+	
+       impares[i]=num[i];
+	   printf("los impares son : %d \n",impares[i]);
+	   }
+     }
+ 
+  
+}
+
+void matriz_si(int f, int c){
+	int num[100][100];
+	char band='F';
+	
+	printf("Digite el numero de filas: "); 
+	scanf("%d",&f);
+    printf("Digite el numero de columnas: "); 
+	scanf("%d",&c);
+
+	for( i=0;i<f;i++){
+		for( j=0;j<c;j++){
+				printf("Digite el numero en la pocision #%d , #%d: ",i,j); 
+	            scanf("%d",&num[i][j]);
+		}
+	}
+	
+	
+	if(f==c){
+		for(int i=0;i<f;i++){
+			for(int j=0;j<c;j++){
+				if(num[i][j] == num[j][i]){
+					band='V';
+				}
+			}
+		}
+	}
+
+	if(band=='V'){
+		printf("\nEs una matriz simetrica \n");
+	}
+	else{
+		printf("\nNo es una matriz simetrica \n");
+	}
+}
+
+
+void matriz_mayor_fila(int f,int c){
+	const char l=20;
+	int num[l][l],menor=99999;
+	printf("Digite el numero de filas: "); 
+	scanf("%d",&f);
+    printf("Digite el numero de columnas: "); 
+	scanf("%d",&c);
+
+	for( i=0;i<f;i++){
+		for( j=0;j<c;j++){
+				printf("Digite el numero en la pocision #%d , #%d: ",i,j); 
+	            scanf("%d",&num[i][j]);
+		}
+	}
+	
+	printf("Digite el numero de la  fila: \n"); 
+	scanf("%d",&f);
+    
+	for( i=f;i<=f;i++){
+		for( j=0;j<c;j++){
+				if(num[i][j]<menor){
+					menor=num[i][j];
+				}
+		}
+	}
+	printf("el numero menor es: %d",menor);
+}
+
+void mayor(int dia, int dia2,int mes, int mes2,int ano,int ano2){
+	printf("ingrese la primera fecha (dd mm aa): \n");
+	scanf("%d",&dia);
+	scanf("%d",&mes);
+	scanf("%d",&ano);
+	printf("ingrese la segunda fecha (dd mm aa): \n");
+	scanf("%d",&dia2);
+	scanf("%d",&mes2);
+	scanf("%d",&ano2);
+	if (ano<ano2||mes<mes2||dia<dia2){
+		printf("La fecha mas reciente es: %d / %d /%d \n",dia2,mes2,ano2);
+	}else{
+	printf("La fecha mas reciente es: %d / %d /%d \n",dia,mes,ano);	
+	}
+	
+}
